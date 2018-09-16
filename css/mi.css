@@ -154,7 +154,7 @@ i{
 	width: 165px;
 	height: 100px;
     margin-left: 15px;
-    background: blue;
+    /*background: blue;*/
     float: left;
 /*     margin-top:30px; */
 }
@@ -172,8 +172,9 @@ i{
 	color: #333;
 	font-size: 16px;
 	padding-right: 15px;
+	position: relative;
 }
-.head .nav .item .text.xm .active{
+.activp{
 	color: #ff6700;
 
 }
@@ -239,15 +240,16 @@ i{
 }
 .ttop{
 	width: 100%;
-	height:0px;
+	height: 600px;
 	/*background: #2196F3;*/
 	position: absolute;
 	top:100px;
 	left:0;
-	z-index: 999;
+	z-index: 0;
 	display: flex;
 	transition: .5s;
 	overflow: hidden;
+	display: none;
 }
 .ttop .hezi{
 	width: 100%;
@@ -264,7 +266,6 @@ i{
 	/*background:#ef3a3b;*/
 	height: 200px;
 	width: 200px;
-	display: flex;
 	flex-direction: column;
 	/*justify-content: center;*/
 	/*align-items: center;*/
@@ -308,12 +309,16 @@ i{
 	margin-top: 5px;
 	cursor: pointer;
 	text-align: center;
+	line-height: 14px;
+	height: 14px;
 }
 .ttop .hezi li .qian{
 	font-size: 14px;
 	margin-top: 5px;
 	color: #ff6700;
 	text-align: center;
+	line-height: 16px;
+	height: 16px;
 }
 .ttop .hezi li:after{
 	content: "";
@@ -359,7 +364,7 @@ i{
 	height: 460px;
 	background-color: rgba(0, 0, 0, 0.6);
 	/*overflow: hidden;*/
-	z-index: 999;
+	z-index: 985;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -374,7 +379,7 @@ i{
 	bottom: 0;
 	margin: auto 0;
 	background: #fff;
-	z-index: 999;
+	z-index: 998;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -876,16 +881,17 @@ i{
 .xm-plain-box .bottom li .time{
      width: 234px;
      height: 47px;
-     margin: auto 0;
+     margin: auto 34px;
      /* background: red; */
      margin-top: 20px;
+
 }
 .xm-plain-box .bottom li .time .num{
      width: 47px;
      height: 47px;
      /* background: red; */
      float: left;
-     margin-left: 34px;
+     /*margin-left: 34px;*/
      text-align: center;
      line-height:47px ;
      font-size: 24px;

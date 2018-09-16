@@ -76,7 +76,7 @@ window.onload=function () {
     let left=document.querySelector(".contento ul li .control-left.kp");
     let right=document.querySelector(".contento ul li .control-right.kp");
     let widtha=parseInt(getComputedStyle(lis,null).width);
-    console.log(book,dot,left,right,widtha);
+    console.log(widtha);
     function frist(book,dot,left,right,widtha){
         book[0].style.left=0;
         dot[0].classList.add("activd");

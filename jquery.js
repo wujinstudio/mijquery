@@ -113,12 +113,121 @@ window.onload=function () {
         }
         pic.css("transform","translate("+(-1200*times)+"px"+")");
     })
-    let re=$(".fix .one")
-    re.click(function () {
-        $(document.body,{scrollTop:0});
-        $(document.documentElement,{scrollTop:0});
-    })
+    //图书
+    function tushu(dot,look,Lbut, Rbut) {
+        let nows=0;
+        let next=0;
+        dot.eq(0).addClass("activd");
+        look.eq(0).css("left","0");
+        dot.click(function () {
+            if($(this).index()>nows){
+                next++;
+                dot.eq(nows).removeClass("activd");
+                dot.eq(next).addClass("activd");
+                look.eq(nows).animate({left: '-294px'});
+                look.eq(next).css("left","294px");
+                look.eq(next).animate({left: '0'});
+            }else if($(this).index()<nows){
+                next--;
+                dot.eq(nows).removeClass("activd");
+                dot.eq(next).addClass("activd");
+                look.eq(nows).animate({left: '294px'});
+                look.eq(next).css("left","-294px");
+                look.eq(next).animate({left: '0'});
+            }
+            nows=next;
+        })
+        Rbut.click(function () {
+            next++;
+            if(next>=2){
+                next=2;
+            }
+            look.eq(nows).animate({left: '-294px'});
+            look.eq(next).css("left","294px");
+            look.eq(next).animate({left: '0'});
+            dot.eq(nows).removeClass("activd");
+            dot.eq(next).addClass("activd");
+            nows=next;
+        })
+        Lbut.click(function () {
+            next--;
+            if(next<0){
+                next=0;
+            }
+            look.eq(nows).animate({left: '294px'});
+            look.eq(next).css("left","-294px");
+            look.eq(next).animate({left: '0'});
+            dot.eq(nows).removeClass("activd");
+            dot.eq(next).addClass("activd");
+            nows=next;
+        })
+    }
+    // console.log($(".contento .control-right.kp"));
+    tushu($(".contento .ctrile.bh"),$(".contento .book.xaa .ab"),$(".contento .control-left.kp"),$(".contento .control-right.kp"));
+    tushu($(".contento .ctrile.bb"),$(".contento .book.bb .abcd"),$(".contento .control-left.bb"),$(".contento .control-right.bb"));
+    tushu($(".contento .ctrile.nn"),$(".contento .book.nn .adcde"),$(".contento .control-left.nn"),$(".contento .control-right.nn"));
+    tushu($(".contento .ctrile.ll"),$(".contento .book.ll .abc"),$(".contento .control-left.ll"),$(".contento .control-right.ll"));
+    //顶部选项卡
 
+    // let mi=$(".head .nav .item .text.xm");
+    // let mix=mi.parent().siblings().slice(10, 18);
+    // mi.mouseenter(function () {
+    //     mix.clearQueue().slideDown();
+    //     mix.css("z-index",999);
+    //     $(this).children(".hezi").css("z-index","0");
+    // })
+    // mi.mouseleave(function () {
+    //     mix.slideUp();
+    // })
+    // console.log(mix);
+    // mi.mouseenter(function () {
+    //     mi.mouseenter(function () {
+    //         let i=$(this).index();
+    //         mix.eq(i).css("zIndex","999");
+    //         mix.slideDown("slow");
+    //         mi.mouseleave(function () {
+    //             mix.slideUp("slow");
+    //             // $(this).parent().siblings().slice(9, 17).css("zIndex","0");
+    //         })
+    //     })
+    // })
+    let back=$(".fix .one");
+    console.log(back);
+    back.css("display","none");
+    back.click(function(){
+        $('html , body').animate({scrollTop: 0},'slow');
+    })
+    $(window).scroll(function () {
+        if($(this).scrollTop()>600){
+            back.fadeIn();
+        }else{
+            back.fadeOut();
+        }
+    })
+    //倒计时
+    let span = document.querySelectorAll(".num");
+    setdate();
+    setInterval(setdate,1000);
+    function setdate(){
+        let arr=fn();
+        span.forEach((v, i) => {
+            v.innerHTML = arr[i];
+        });
+
+    }
+    function fn() {
+        let arr = [];
+        let now = new Date();
+        let future = new Date(2018, 8, 25,12,12);
+        let time = Math.floor((future.getTime() - now.getTime()) / 1000);
+        let hour = Math.floor(time % (30 * 24 * 60 * 60) % (24 * 60 * 60) / (60 * 60));
+        arr.push(hour);
+        let m = Math.floor(time % (30 * 24 * 60 * 60) % (24 * 60 * 60) % (60 * 60) / 60);
+        arr.push(m);
+        let s = Math.floor(time % (30 * 24 * 60 * 60) % (24 * 60 * 60) % (60 * 60) % 60);
+        arr.push(s);
+        return arr;
+    }
 }
 
 
